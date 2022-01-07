@@ -16,18 +16,20 @@ export default function TextForm(props) {
   };
   const handleBelugaClick = () => {
     let newText = "";
-    let flag = 1;
-    let words = text.split(" ");
-    for (let i = 0; i < words.length; i++) {
-      let word = "";
-      for (let j = 0; j < words[i].length; j++) {
-        let x;
-        if (flag) x = words[i][j].toUpperCase();
-        else x = words[i][j].toLowerCase();
-        flag ^= 1;
-        word += x;
+    if (text.length) {
+      let flag = 1;
+      let words = text.split(" ");
+      for (let i = 0; i < words.length; i++) {
+        let word = "";
+        for (let j = 0; j < words[i].length; j++) {
+          let x;
+          if (flag) x = words[i][j].toUpperCase();
+          else x = words[i][j].toLowerCase();
+          flag ^= 1;
+          word += x;
+        }
+        newText += word + " ";
       }
-      newText += word + " ";
     }
     setText(newText);
   };
