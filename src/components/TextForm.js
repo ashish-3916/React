@@ -44,17 +44,10 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
-        <h2>{props.heading}</h2>
+      <div className="container"  >
+        <h2 style ={{color : props.mode==="light"?"black":"white"}}>{props.heading}</h2>
         <div className="mb-3">
-          <textarea
-            className="form-control"
-            id="mybox"
-            rows="10"
-            placeholder="Enter the text"
-            value={text}
-            onChange={handleOnChange}
-          ></textarea>
+          <textarea className="form-control" style ={{backgroundColor : props.mode==="light"?"white":"#07233f" , color : props.mode==="light"?"black":"white"}} id="mybox" rows="10" placeholder="Enter the text" value={text} onChange={handleOnChange}></textarea>
         </div>
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>
           Uppercase
@@ -68,15 +61,11 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-1" onClick={handleCopyClick}>
           Copy Text
         </button>
-        <button
-          className="btn btn-primary mx-1"
-          style={{ float: "right" }}
-          onClick={handleResetClick}
-        >
+        <button className="btn btn-primary mx-1" style={{ float: "right" }} onClick={handleResetClick}>
           Reset
         </button>
       </div>
-      <div className="container my-3">
+      <div className="container my-3" style ={{color : props.mode==="light"?"black":"white"}} >
         <h3>Text Summary</h3>
         <p>Reading Time : {0.01 * text.split(" ").length} min</p>
         <p>
