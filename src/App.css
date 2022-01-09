@@ -1,0 +1,9 @@
+#message {  
+    float :right ;
+    top: 0;
+    left: 0;
+    width: 25%;
+}
+#inner-message {
+    margin: 0 auto;
+}
