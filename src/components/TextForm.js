@@ -2,20 +2,41 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const [text, setText] = useState("");
+  const [word, setWord] = useState(0);
+  const [letter, setLetter] = useState(0);
 
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
-    props.alert("Converted to Uppercase!!" , "success");
+    props.alert("Converted to Uppercase!!", "success");
   };
   const handleLowClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
-    props.alert("Converted to Lowercase!!" , "success");
+    props.alert("Converted to Lowercase!!", "success");
   };
+
   const handleOnChange = (event) => {
+    console.log("before :" + text);
     setText(event.target.value);
+    console.log("event :" + event.target.value);
+    console.log("after :" + text);
+    console.log(" ");
+
+    
+    var words = 0;
+    var characters = 0 ;
+
+    for(var i =0 ; i<text.length ;i++){
+      var cnt = 0;
+      while(i<text.length && text[i]!==' '){i++ ; cnt+=1;}
+      if(cnt!==0){words+=1 ; characters+=cnt;}
+    }
+    setWord(words);
+    setLetter(characters);
+    
   };
+
   const handleBelugaClick = () => {
     let newText = "";
     if (text.length) {
@@ -34,17 +55,18 @@ export default function TextForm(props) {
       }
     }
     setText(newText);
-    props.alert("Magic Done!!" , "success");
+    props.alert("Magic Done!!", "success");
   };
   const handleCopyClick = () => {
     var text = document.getElementById("mybox");
     text.select();
     navigator.clipboard.writeText(text.value);
-    props.alert("Copied to clipboard!!" , "success");
+    props.alert("Copied to clipboard!!", "success");
   };
+
   const handleResetClick = (event) => {
     setText("");
-    props.alert("Text Area cleared!!" , "success");
+    props.alert("Text Area cleared!!", "success");
   };
 
   return (
@@ -72,9 +94,9 @@ export default function TextForm(props) {
       </div>
       <div className="container my-3" style={{ color: props.mode === "light" ? "black" : "white" }}>
         <h3>Text Summary</h3>
-        <p>Reading Time : {0.01 * text.split(" ").length} min</p>
+        <p>Reading Time : {0.01 * word} min</p>
         <p>
-          {text.length ? text.split(" ").length : 0} words and {text.length} characters
+          {word} words and {letter} characters
         </p>
       </div>
     </>
