@@ -92,19 +92,19 @@ export default function TextForm(props) {
         <div className="mb-3">
           <textarea className="form-control my-3" style={{ backgroundColor: props.mode === "light" ? "white" : "#07233f", color: props.mode === "light" ? "black" : "white" }} id="mybox" rows="10" name="mybox" placeholder="Enter The Text" value={text} onChange={handleOnChange}></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleUpClick}>
           Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowClick}>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleLowClick}>
           LowerCase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleBelugaClick}>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleBelugaClick}>
           BeLuGa
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopyClick}>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleCopyClick}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-1" style={{ float: "right" }} onClick={handleResetClick}>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleResetClick}>
           Reset
         </button>
       </div>
