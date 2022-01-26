@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
@@ -35,17 +35,17 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar name="TextAnalyser" mode={mode} toggle={handleToggle} />
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
             <Route path="/" element={<TextForm heading="Enter the text below" mode={mode} alert={showAlert} />} />
             <Route path="/home" element={<TextForm heading="Enter the text below" mode={mode} alert={showAlert} />} />
-            <Route path="/about" element={<About mode = {mode} />} />
+            <Route path="/about" element={<About mode={mode} />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
