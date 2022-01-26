@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const [text, setText] = useState("");
-  const [word, setWord] = useState(0);
-  const [letter, setLetter] = useState(0);
 
   const handleUpClick = () => {
     let newText = text.toUpperCase();
@@ -17,24 +15,42 @@ export default function TextForm(props) {
   };
 
   const handleOnChange = (event) => {
-    console.log("before :" + text);
     setText(event.target.value);
-    console.log("event :" + event.target.value);
-    console.log("after :" + text);
-    console.log(" ");
+  };
 
-    
+  const countWord = () => {
     var words = 0;
-    var characters = 0 ;
+    var characters = 0;
 
-    for(var i =0 ; i<text.length ;i++){
+    for (var i = 0; i < text.length; i++) {
       var cnt = 0;
-      while(i<text.length && text[i]!==' '){i++ ; cnt+=1;}
-      if(cnt!==0){words+=1 ; characters+=cnt;}
+      while (i < text.length && text[i] !== " ") {
+        i++;
+        cnt += 1;
+      }
+      if (cnt !== 0) {
+        words += 1;
+        characters += cnt;
+      }
     }
-    setWord(words);
-    setLetter(characters);
-    
+    return words;
+  };
+  const countLetter = () => {
+    var words = 0;
+    var characters = 0;
+
+    for (var i = 0; i < text.length; i++) {
+      var cnt = 0;
+      while (i < text.length && text[i] !== " ") {
+        i++;
+        cnt += 1;
+      }
+      if (cnt !== 0) {
+        words += 1;
+        characters += cnt;
+      }
+    }
+    return characters;
   };
 
   const handleBelugaClick = () => {
@@ -74,7 +90,7 @@ export default function TextForm(props) {
       <div className="container">
         <h2 style={{ color: props.mode === "light" ? "black" : "white" }}>{props.heading}</h2>
         <div className="mb-3">
-          <textarea className="form-control my-3" style={{ backgroundColor: props.mode === "light" ? "white" : "#07233f", color: props.mode === "light" ? "black" : "white" }} id="mybox" rows="10" placeholder="Enter the text" value={text} onChange={handleOnChange}></textarea>
+          <textarea className="form-control my-3" style={{ backgroundColor: props.mode === "light" ? "white" : "#07233f", color: props.mode === "light" ? "black" : "white" }} id="mybox" rows="10" name="mybox" placeholder="Enter The Text" value={text} onChange={handleOnChange}></textarea>
         </div>
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>
           Uppercase
@@ -94,9 +110,9 @@ export default function TextForm(props) {
       </div>
       <div className="container my-3" style={{ color: props.mode === "light" ? "black" : "white" }}>
         <h3>Text Summary</h3>
-        <p>Reading Time : {0.01 * word} min</p>
+        <p>Reading Time : {0.01 * countWord()} min</p>
         <p>
-          {word} words and {letter} characters
+          {countWord()} words and {countLetter()} characters
         </p>
       </div>
     </>
