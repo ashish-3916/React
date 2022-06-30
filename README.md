@@ -1,5 +1,8 @@
 # LINK
 https://ashish-3916.github.io/textAnalyser/
+
+![](https://github.com/ashish-3916/textAnalyser/blob/main/src/images/text1.png)
+![](https://github.com/ashish-3916/textAnalyser/blob/main/src/images/text2.png)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
